@@ -8,6 +8,8 @@ vagrant:
     - name: ubuntu/trusty64
       box: trusty64
       box_url: https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box
+    - name: bento/centos-7.3
+      box: bento/centos-7.3
   providers:
     - name: virtualbox
       type: virtualbox
