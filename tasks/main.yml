@@ -5,3 +5,15 @@
     name: ntp
     state: present
   tags: [ntp]
+
+- name: set ntp service name
+  set_fact:
+    ntp_service: "{{ (ansible_os_family == 'Debian') | ternary('ntp','ntpd') }}"
+  tags: [ntp]
+
+- name: ensure ntp is running and enabled
+  service:
+    name: "{{ ntp_service }}"
+    state: started
+    enabled: yes
+  tags: [ntp]
