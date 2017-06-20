@@ -4,9 +4,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     '.molecule/ansible_inventory').get_hosts('all')
 
 
-def test_hosts_file(File):
-    f = File('/etc/hosts')
+def test_ntp_is_installed(Package):
+    p = Package('ntp')
 
-    assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
+    assert p.is_installed
